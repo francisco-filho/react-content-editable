@@ -1,0 +1,161 @@
+$borderColor: #cecece;
+$darkerColor: #eee;
+$lightColor: #f8f8f8;
+$color: #222;
+
+$padding: 5px;
+
+.datagrid {
+    font-family: Arial;
+    font-size: 14px;
+    color: $padding;
+    //box-shadow: 0 2px 4px #aaa;
+    box-sizing: border-box;
+
+    table {
+        border: 1px solid $borderColor;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        position: relative;
+        background-image: linear-gradient($darkerColor, #e8e8e8);
+        min-height: 42px;
+        height: 42px;
+
+        i {
+            position: absolute;
+            color: #cfcfcf;
+            right: 10px;
+            top: calc(32px / 2);
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .sort {
+            color: #000;
+        }
+    }
+
+    td, th {
+        padding: 7px 5px;
+        border: 1px solid $borderColor;
+    }
+
+    tr:first-of-type td {
+        padding: 7px 5px;
+    }
+
+    tbody>tr td {
+        border-color: #e0e0e0;
+    }
+
+    tr:hover td {
+        background-color: rgba(150,150,150,.05);
+    }
+
+    td.selected-col {
+        background-color: #f2f2f2;
+        opacity: .9;
+    }
+
+    tbody>tr:nth-child(even) {
+        background-color: #f8f8f8;
+    }
+
+    .integer, .icon, .action {
+        text-align: center;
+    }
+
+    .text {
+        text-align: left;
+    }
+
+    .action {
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.datagrid>.header {
+    display: flex;
+    border: 1px solid $borderColor;
+    border-bottom: none;
+    /*background-image: linear-gradient($darkerColor, #e8e8e8);*/
+    background-image: linear-gradient($darkerColor, $darkerColor);
+
+    .filter {
+        display: flex;
+        flex: 1;
+        padding: 5px;
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            padding: 2px;
+            padding-right: 5px;
+            border-radius: 2px;
+            background-color: $lightColor;
+            border: 1px solid $borderColor;
+
+            input {
+                flex: 1;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                padding: 4px;
+            }
+
+            .fa-search {
+                margin: 0 5px;
+            }
+        }
+
+        .btn {
+            color: #444;
+            font-size: 12px;
+            font-weight: 100;
+            padding: 1px 5px;
+            background-color: #f8f8f8;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    }
+
+    .paginator {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+
+        .records {
+            font-size: .7rem;
+            font-weight: normal;
+            color: #888;
+            margin-right: 3px;
+        }
+        .status {
+            margin: 0 10px;
+            font-size: .8rem;
+            font-weight: bold;
+        }
+        i {
+            margin: 0 3px;
+        }
+        .arrow {
+            font-size: 1.0rem;
+            cursor: pointer;
+            color: #888;
+
+            &.disabled {
+                pointer-events: none;
+                color: #ccc;
+            }
+        }
+    }
+}
+

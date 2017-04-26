@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Popover from './Popover'
 
 export default class App extends Component {
   constructor(){
     super()
     this.state = {
+      text: 'hello',
+      checked: false,
       active: false,
       editing: false,
       editingItem: false,
@@ -41,6 +44,8 @@ export default class App extends Component {
 
   render(){
     const {editing, active, data, editingItem} = this.state
+
+    console.log('checked state', this.state.checked)
     return <div>
         <div className="tooltips">
           <h1>Tooltips</h1>
@@ -77,7 +82,52 @@ export default class App extends Component {
             console.log('adding')
           }}/>
       }
+      <div></div>
+        <hr/>
+
     </div>
+
+    <div>
+      <h1 onClick={ e => this.setState({active: !active})}>React!</h1>
+      {
+        data.map( (d,i) => {
+          return <Popover
+            key={i}
+            title="Ferramenta"
+            description={"Lorem ipsum dolor sit amet, elit. Dignissimos, optio."}
+            component={<div className="btn" key={i}>
+              <i className="fa fa-calendar"/>
+              <span className="x">{d}</span>
+            </div>}>
+            <ul>
+
+              <li><input
+                type="text"
+                value={this.state.text}
+                onChange={ e => this.setState({text: e.target.value})}
+              /></li>
+              <li><input type="checkbox" checked={this.state.checked} id="um"
+                onChange={ e => { this.setState({checked: e.target.checked}) }}/><label htmlFor="um">Conteúdo ativo?</label></li>
+              <li><input type="radio" checked={this.state.checked}
+                         onChange={ e => { this.setState({checked: e.target.checked}) }}/><label>am i checked?</label></li>
+              <li><span>Lorem ipsum dolor sit amet.</span></li>
+              <li><span>Lorem ipsum .</span></li>
+              <li><span>Lorem ipsum dolor sit amet.</span></li>
+              <li><input type="radio" checked={this.state.checked}
+                         onChange={ e => { this.setState({checked: e.target.checked}) }}/><label>am i checked?</label></li>
+              <li><span>Lorem ipsum .</span></li>
+              <li><span>Lorem ipsum dolor sit amet.</span></li>
+            </ul>
+            <div className="footer">
+              <a onClick={ e => alert(`cancelando ${d}`)}>Cancelar</a>
+              <a onClick={ e => alert(`salvando ${d}`)}>Salvar</a>
+            </div>
+          </Popover>
+
+
+        })
+      }
+      </div>
     </div>
   }
 }

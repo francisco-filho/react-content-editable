@@ -1,0 +1,244 @@
+$borderColor: #ccc;
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  width: 220px;
+  list-style: none;
+  .content:before {
+    content: ' ';
+    z-index: 1;
+    position: absolute;
+    left: calc(50% - 12px);
+    top: -26px;
+    border: 12px solid transparent;
+    border-bottom: 14px solid #eee;
+    width: 0px;
+    height: 0px;
+  }
+}
+ul {
+  width: 100%;
+}
+
+.popover-container a {
+  display: inline-block;
+  width: 100%;
+  padding: 5px;
+}
+
+.popover-container {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  background-color: #ccc;
+
+  .header {
+    border: 1px solid #ccc;
+  }
+
+  p {
+    background-color: #fefefe !important;
+    padding: 10px;
+    padding-top: 0;
+    display: block;
+    border: none;
+    font-size: 12px;
+    font-weight: normal;
+  }
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 16px);
+  display: inline-block;
+  min-width: 200px;
+  box-shadow: 0 0 8px #aaa;
+  z-index: 2;
+
+  &.center, &.auto {
+    left: calc(50% + 16px);
+    transform: translateX(-50%);
+  }
+
+  &.center:after, &.auto:after {
+    left: calc(50% - 14px);
+  }
+  &.center:before, &.auto:before {
+    left: calc(50% - 12px);
+  }
+
+  &.left {
+    left: 0;
+    transform: translateX(0%);
+  }
+  &.left:after {
+    left: 12px;
+  }
+  &.left:before {
+    left: 14px;
+  }
+
+  &.right {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+  &.right:after {
+    right: 12px;
+  }
+  &.right:before {
+    right: 14px;
+  }
+
+  &:after {
+    content: ' ';
+    z-index: 1;
+    position: absolute;
+    top: -28px;
+    border: 12px solid transparent;
+    border-bottom: 16px solid #cecece;
+    //border-bottom: 14px solid blue;
+    width: 0px;
+    height: 0px;
+  }
+
+  &:before {
+    content: ' ';
+    z-index: 2;
+    position: absolute;
+    top: -23px;
+    border: 10px solid transparent;
+    border-bottom: 14px solid #fefefe;
+    //border-bottom: 12px solid red;
+    width: 0px;
+    height: 0px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 100;
+    margin: 0;
+    background-color: #fefefe;
+    font-weight: bold;
+  }
+
+  .close {
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    border: 1px solid $borderColor;
+    border-top: none;
+    display: inline-block;
+    background-color: #eee;
+    margin: 0;
+    padding: 0;
+    min-height: 50px;
+    min-width: 100px;
+    border-radius: 2px;
+  }
+
+  .content>* {
+    z-index: 2;
+    font-size: 14px;
+  }
+
+  .footer {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #ccc;
+
+    a {
+      flex: 1;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 10px;
+      text-align: center;
+      background-color: #fff;
+      border-right: 1px solid #ccc;
+      cursor: pointer;
+      transition: all .1s;
+
+      &:last-of-type {
+        border-right: none;
+      }
+
+      &:hover {
+        background-color: #16b;
+        color: #fff;
+        transition: all .1s;
+      }
+    }
+  }
+}
+
+.popover-container {
+  li {
+    display: flex;
+    align-items: center;
+    &>* {
+      display: inline-block;
+      padding: 10px !important;
+
+    }
+    color: #222;
+
+    border-bottom: 1px solid #e0e0e0;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: #e3e3e3;
+    }
+  }
+
+  input[type=text] {
+    width: 100%;
+    border: none;
+  }
+  input[type=radio],input[type=checkbox]{
+    margin-left: 10px;
+  }
+  label {
+    flex: 1;
+  }
+}
+
+.active .popover-trigger {
+  box-shadow: inset 0 0 0 2px #aaa;
+}
+
+.slide-center-appear, .slide-auto-appear{
+  opacity: .1;
+  transform: translateX(-50%) scaleY(0.3) !important;
+  transform-origin: center top;
+  transition: all .2s ease;
+}
+.slide-center-appear-active, .slide-auto-appear-active  {
+  opacity: 1;
+  transform: translateX(-50%) scaleY(1) !important;
+  transition : all .2s ease;
+}
+
+.slide-right-appear{
+  opacity: .1;
+  transform: translateX(-100%) scaleY(0.3) !important;
+  transform-origin: center top;
+  transition: all .2s ease;
+}
+.slide-right-appear-active {
+  opacity: 1;
+  transform: translateX(-100%) scaleY(1) !important;
+  transition : all .2s ease;
+}
